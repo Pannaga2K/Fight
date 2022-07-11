@@ -5,7 +5,6 @@ class Sprite {
         this.height = 150;        
         this.image = new Image()
         this.imageSrc = imageSrc;
-        this.image.src = this.imageSrc;
         this.scale = scale;
         this.framesMax = framesMax;
         this.framesCurrent = 0;
@@ -16,7 +15,6 @@ class Sprite {
 
     draw() {
         // INSERT SPECIFIC SPRITE OUT OF ALL THE FRAMES WITH RESPECTIVE POSITIONS
-        this.image.onload = () => {
             c.drawImage(
                 this.image,
                 this.framesCurrent * (this.image.width / this.framesMax),  //x
@@ -29,7 +27,7 @@ class Sprite {
                 (this.image.width / this.framesMax) * this.scale, 
                 this.image.height * this.scale
             );
-        }
+            this.image.src = this.imageSrc;
     }
 
     animateFrames() {
