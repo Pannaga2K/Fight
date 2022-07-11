@@ -91,7 +91,7 @@ class Fighter extends Sprite {
     // }
 
     update() {
-        this.draw();
+        // this.draw();
         if(!this.dead)
             this.animateFrames();
         // ATTACK BOXES
