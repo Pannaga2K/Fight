@@ -4,7 +4,7 @@ class Sprite {
         this.width = 50;
         this.height = 150;        
         this.image = new Image()
-        this.image.src = imageSrc;
+        this.imageSrc = imageSrc;
         this.scale = scale;
         this.framesMax = framesMax;
         this.framesCurrent = 0;
@@ -15,18 +15,21 @@ class Sprite {
 
     draw() {
         // INSERT SPECIFIC SPRITE OUT OF ALL THE FRAMES WITH RESPECTIVE POSITIONS
-        c.drawImage(
-            this.image,
-            this.framesCurrent * (this.image.width / this.framesMax),  //x
-            // 0,  //x
-            0,  //y
-            this.image.width / this.framesMax,
-            this.image.height,
-            this.position.x - this.offset.x, 
-            this.position.y - this.offset.y, 
-            (this.image.width / this.framesMax) * this.scale, 
-            this.image.height * this.scale
-        );
+        this.image.onload = () => {
+            c.drawImage(
+                this.image,
+                this.framesCurrent * (this.image.width / this.framesMax),  //x
+                // 0,  //x
+                0,  //y
+                this.image.width / this.framesMax,
+                this.image.height,
+                this.position.x - this.offset.x, 
+                this.position.y - this.offset.y, 
+                (this.image.width / this.framesMax) * this.scale, 
+                this.image.height * this.scale
+            );
+            this.image.src = this.imageSrc;
+        }
     }
 
     animateFrames() {
